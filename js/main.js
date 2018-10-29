@@ -145,6 +145,7 @@ timer = 0;
 ctx.font = String(hper(4)) + "px Verdana";
 score = 0;
 at = 0;
+ob = true;
 function draw() {
 	//ctx.fillStyle = "#111111";
 	//ctx.fillRect(0, 0, cvs.width, cvs.height);
@@ -185,7 +186,20 @@ function draw() {
 			at--;
 			for(i = 1; i < 5; i++) ctx.drawImage(rach, wper(20)*i, (hper(100)/5) * pers.y, wper(20), hper(100)/5); 
 		}
-		
+		if(score < 50) {
+			ctx.fillStyle = textColor;
+			ctx.strokeStyle = textColor;
+			ctx.beginPath();
+			ctx.moveTo(wper(50), hper(0));
+			ctx.lineTo(wper(50), hper(100));
+			ctx.stroke();
+			ctx.moveTo(wper(0), hper(50));
+			ctx.lineTo(wper(50), hper(50));
+			ctx.stroke();
+			ctx.fillText('Up or "w" on keyboard', wper(15), hper(25));
+			ctx.fillText('Down or "s" on keyboard', wper(15), hper(75));
+			ctx.fillText('Shot or "Space" on keyboard', wper(65), hper(50));
+		}
 		ctx.drawImage(pers.pic, 0, (hper(100)/5) * pers.y, wper(20), hper(100)/5); 
 		ctx.fillStyle = "#000000";
 		ctx.fillRect(wper(70), hper(1), wper(20), hper(10));
